@@ -1,5 +1,5 @@
 {
-    "name": "kimromi/jp_zipcode",
+    "name": "kimromi/JpZipCode",
     "license": "MIT",
     "autoload": {
         "psr-4": {
