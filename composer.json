@@ -1,0 +1,21 @@
+{
+    "name": "kimromi/jp_zipcode",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+           "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kimromi",
+            "email": "hiromi19860101@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/yaml": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.3"
+    }
+}
