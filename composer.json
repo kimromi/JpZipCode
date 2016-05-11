@@ -1,5 +1,6 @@
 {
-    "name": "kimromi/JpZipCode",
+    "name": "kimromi/jp_zip_code",
+    "description": "convert from zip-code to japan address (include Roman address)",
     "license": "MIT",
     "autoload": {
         "psr-4": {
