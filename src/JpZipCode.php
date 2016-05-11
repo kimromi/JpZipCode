@@ -1,4 +1,6 @@
 <?php
+namespace JpZipCode;
+
 require_once __DIR__ . '/JpZipCode/Filer.php';
 use Symfony\Component\Yaml\Parser;
 

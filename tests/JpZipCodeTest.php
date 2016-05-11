@@ -1,4 +1,6 @@
 <?php
+use JpZipCode\JpZipCode;
+
 class JpZipCodeTest extends \PHPUnit_Framework_TestCase
 {
     function testSearch()
@@ -36,5 +38,4 @@ class JpZipCodeTest extends \PHPUnit_Framework_TestCase
             $this->assertNull(JpZipCode::search($errorZip));
         }
     }
-
 }

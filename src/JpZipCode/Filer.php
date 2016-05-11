@@ -1,5 +1,5 @@
 <?php
-namespace JpZipCode;
+namespace JpZipCode\JpZipCode;
 
 class Filer
 {

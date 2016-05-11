@@ -1,4 +1,6 @@
 <?php
+use JpZipCode\JpZipCode;
+
 class FilerTest extends \PHPUnit_Framework_TestCase
 {
     function getInstance($type)
