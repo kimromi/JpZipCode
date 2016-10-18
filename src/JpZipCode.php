@@ -55,7 +55,7 @@ class JpZipCode {
         $converted['address_kana']  = trim($converted['pref_kana'].$converted['city_kana'].$converted['town_kana']);
         $converted['address_roman'] = trim($converted['town_roman'].' '.$converted['city_roman'].' '.$converted['pref_roman']);
 
-        if (self::$prefCodesConfigFilePath != DEFAULT_PREF_CODES_FILE_PATH) {
+        if (self::$prefCodesConfigFilePath != DEFAULT_PREF_CODES_FILE_PATH || !empty(self::$prefCodesConfigArray)) {
             $jisPrefConfig =  self::readYaml(DEFAULT_PREF_CODES_FILE_PATH);
             $converted['jis_pref_code'] = (string)array_flip($jisPrefConfig)[$data['pref_kanji']];
         }
@@ -64,12 +64,24 @@ class JpZipCode {
     }
 
     private static function prefCodes() {
+        if (!empty(self::$prefCodesConfigArray)) {
+            return self::$prefCodesConfigArray;
+        }
         $file = is_readable(self::$prefCodesConfigFilePath) ? self::$prefCodesConfigFilePath : DEFAULT_PREF_CODES_FILE_PATH;
         return self::readYaml($file);
     }
 
     public static function setPrefCodesConfigFilePath($path) {
         self::$prefCodesConfigFilePath = $path;
+    }
+
+    public static function setPrefCodesConfigArray($array) {
+        self::$prefCodesConfigArray = $array;
+    }
+
+    public static function resetConfig() {
+        self::$prefCodesConfigArray = [];
+        self::$prefCodesConfigFilePath = DEFAULT_PREF_CODES_FILE_PATH;
     }
 
     public static function update()

@@ -3,6 +3,10 @@ use JpZipCode\JpZipCode;
 
 class JpZipCodeTest extends \PHPUnit_Framework_TestCase
 {
+    function setUp() {
+        JpZipCode::resetConfig();
+    }
+
     function testSearch()
     {
         $this->assertEquals(JpZipCode::search('8100001'), array(
@@ -39,9 +43,19 @@ class JpZipCodeTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    function testOverwritePrefCodeConfig()
+    function testOverwritePrefCodeConfigByFile()
     {
         JpZipCode::setPrefCodesConfigFilePath(__DIR__ . '/fixture/pref_code_test.yaml');
+        $addressData = JpZipCode::search('8100001');
+        $this->assertEquals('940', $addressData['pref_code']);
+        $this->assertEquals('40',  $addressData['jis_pref_code']);
+    }
+
+    function testOverwritePrefCodeConfigByData()
+    {
+        JpZipCode::setPrefCodesConfigArray(array(
+            940 => '福岡県'
+        ));
         $addressData = JpZipCode::search('8100001');
         $this->assertEquals('940', $addressData['pref_code']);
         $this->assertEquals('40',  $addressData['jis_pref_code']);
