@@ -4,7 +4,7 @@ use JpZipCode\JpZipCode;
 class JpZipCodeTest extends \PHPUnit_Framework_TestCase
 {
     function setUp() {
-        JpZipCode::resetConfig();
+        JpZipCode::resetDefaultConfig();
     }
 
     function testSearch()

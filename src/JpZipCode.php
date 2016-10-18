@@ -79,7 +79,7 @@ class JpZipCode {
         self::$prefCodesConfigArray = $array;
     }
 
-    public static function resetConfig() {
+    public static function resetDefaultConfig() {
         self::$prefCodesConfigArray = [];
         self::$prefCodesConfigFilePath = DEFAULT_PREF_CODES_FILE_PATH;
     }
