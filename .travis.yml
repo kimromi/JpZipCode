@@ -1,13 +1,13 @@
 language: php
 php:
-  - 5.6
-  - 7.0
+- 5.6
+- 7.0
 before_script:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev --prefer-source
+- curl -s http://getcomposer.org/installer | php
+- php composer.phar install --dev --prefer-source
 script:
-  - phpunit
+- phpunit
 notifications:
   email: false
   slack:
-    secure: EI+tiNEm2V0TmNBOmGVV40thHdFcxGhCO0hHL8skt3k6r2g+pgaeV6Zc7o25w7Vkb2ArpaqBJ/7QpIA76lkARZUgmLcaKJszo0rmQL5Od3PVPVhhNXYF4zbwTlCuLOm845iyg0FlWaHWUNuhkCcmk4F0M2lgGhgDhp/GVaQohe5vtPG8wBADppJRvIeeVtSWmu46erR7wySZu9nE05AVkBM3vnHifcSY1r9/YLJ12qm3lcJ2yzkdXmpfR1W2Y20iTLOy6nveoIt8GxMoMbWUrDIMsilFQrqqh8cVdVl4PGbsTlgmQP8ktcp75V8TllZYCIrZxRSeLHtwBNCS1ojjjs9R4gv9JOaHvwC7K30s6MLBLNpXGES8X9bYYuXt8D5U/6cTnSouz7dsAEVlb1Sgk6COFSFqLhAxAH/tLqSCn5tgIw+QON9ZknIvdNlj55ZqmZNgZ0/CWGNy32QmhIpjckofjwB6H1bxXXNsl7m8Ko+YKo/titdUZzCHbInkRZPWTR3cSuWhICSWjCj97KxCNIcN8wMPkxvjaRmX0CS4UPigvd8rsNGx4aSdxK9AtRxGDtww4lvpHryt+WzqiW1zIr1cjJWce5M9l7WvI48PG/ajNRe+9HQGO2gias6ZjjoCxboBfCJ9V0YZjY7EWZd6JFTDmbYTkTMbVJHwLxuaQ0c=
+    secure: ekG0m+AT7rcyU3R92DjtwI0O7QrM9z5p/rfnaWuLKLl8ysE1YuF/emdrYXHn0jkVNFPBPXnOmHBB1amzvE9Sv5fA3PmGj7TQf+QH+ij/tQgpojzfqYteKKkr+EU1BZ6sckDf7MZ10HlMVPRJ3FZCBVHEdo7f6O5JDtxLM9XAPSQkXUWrVL/Mw67dl4QIL3hY4Hy9Q9siygKP3I8WOJJ/z7Rvmk4IaG3n1VUtSaM/EyBJAVrMoviPQJwa3uxn9eyAKa97R/X7T+qSLkzCDyo11JL8FUS3R/8K+n67S22u+SRo6VgvOW2RfTuhdnDrpFMsD7fKk1faFi3n/+2XYdg61LnrVYxHonfpwAeCrNzaj/PsHC1JRb7AQW3vWud/dqNeWtTK4ZJ/eXv9Jp0O6lA5TNw6DaSAKn8GNUw6F+N7CvtVbiKAG0q/508O/HA2lRyCYEaufXQnxH00RIoyJCSodWEEcDz10qsss77+Tan1spegGThCfM2hGtQCdP3SJuHGAFXoC3HdydPf/R4N/yQNhMwz8NuCYWKFSQ54QbyW4z7EpDgnrCGYHY92qwRXqmT9ZVdMcf8T3rG3BByQ7woyiUv18q8HxpIkrWyT1EM/FqfX9UOwJahuC/KPC9NMM3S7xmis/QC73M2E+tEv0+6VeXimTtRe1WzW5Xazgp5/i1g=
