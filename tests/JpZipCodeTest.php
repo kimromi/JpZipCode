@@ -9,7 +9,7 @@ class JpZipCodeTest extends \PHPUnit_Framework_TestCase
 
     function testSearch()
     {
-        $this->assertEquals(JpZipCode::search('8100001'), array(
+        $this->assertEquals(JpZipCode::search('8100001'), [
             'code'          => '40133',
             'old_zip_code'  => '810',
             'zip_code'      => '8100001',
@@ -26,7 +26,7 @@ class JpZipCodeTest extends \PHPUnit_Framework_TestCase
             'address_kanji' => '福岡県福岡市中央区天神',
             'address_roman' => 'Tenjin Chuo-Ku Fukuoka-Shi Fukuoka-Ken',
             'address_kana'  => 'ﾌｸｵｶｹﾝﾌｸｵｶｼﾁｭｳｵｳｸﾃﾝｼﾞﾝ',
-        ));
+        ]);
 
         foreach([
           null,
@@ -53,9 +53,9 @@ class JpZipCodeTest extends \PHPUnit_Framework_TestCase
 
     function testOverwritePrefCodeConfigByData()
     {
-        JpZipCode::setPrefCodesConfigArray(array(
+        JpZipCode::setPrefCodesConfigArray([
             940 => '福岡県'
-        ));
+        ]);
         $addressData = JpZipCode::search('8100001');
         $this->assertEquals('940', $addressData['pref_code']);
         $this->assertEquals('40',  $addressData['jis_pref_code']);
