@@ -3,10 +3,14 @@ namespace JpZipCode;
 
 require_once __DIR__ . '/JpZipCode/Filer.php';
 use Symfony\Component\Yaml\Parser;
+define("DEFAULT_PREF_CODES_FILE_PATH", __DIR__ . '/../data/pref_code.yaml');
 
 class JpZipCode {
 
-    static function search($zipCode)
+    private static $prefCodesConfigFilePath = DEFAULT_PREF_CODES_FILE_PATH;
+    private static $prefCodesConfigArray = [];
+
+    public static function search($zipCode)
     {
         $zipCode = str_replace('-', '', ((string)$zipCode));
         if (!preg_match('/^\d{7}$/', $zipCode)) {
@@ -22,7 +26,7 @@ class JpZipCode {
         return null;
     }
 
-    static function convert($data) {
+    private static function convert($data) {
         $converted = [];
         $converted['pref_code'] = (string)array_flip(self::prefCodes())[$data['pref_kanji']];
 
@@ -50,15 +54,25 @@ class JpZipCode {
         $converted['address_kanji'] = trim($converted['pref_kanji'].$converted['city_kanji'].$converted['town_kanji']);
         $converted['address_kana']  = trim($converted['pref_kana'].$converted['city_kana'].$converted['town_kana']);
         $converted['address_roman'] = trim($converted['town_roman'].' '.$converted['city_roman'].' '.$converted['pref_roman']);
+
+        if (self::$prefCodesConfigFilePath != DEFAULT_PREF_CODES_FILE_PATH) {
+            $jisPrefConfig =  self::readYaml(DEFAULT_PREF_CODES_FILE_PATH);
+            $converted['jis_pref_code'] = (string)array_flip($jisPrefConfig)[$data['pref_kanji']];
+        }
+
         return $converted;
     }
 
-    static function prefCodes() {
-        $yaml = new Parser();
-        return $yaml->parse(file_get_contents(__DIR__ . '/../data/pref_code.yaml'));
+    private static function prefCodes() {
+        $file = is_readable(self::$prefCodesConfigFilePath) ? self::$prefCodesConfigFilePath : DEFAULT_PREF_CODES_FILE_PATH;
+        return self::readYaml($file);
     }
 
-    static function update()
+    public static function setPrefCodesConfigFilePath($path) {
+        self::$prefCodesConfigFilePath = $path;
+    }
+
+    public static function update()
     {
         foreach(['jp', 'roman'] as $type) {
             $filer = new JpZipCode\Filer($type);
@@ -69,4 +83,8 @@ class JpZipCode {
         }
     }
 
+    private static function readYaml($path) {
+        $yaml = new Parser();
+        return $yaml->parse(file_get_contents($path));
+    }
 }

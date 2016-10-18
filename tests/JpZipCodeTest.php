@@ -38,4 +38,12 @@ class JpZipCodeTest extends \PHPUnit_Framework_TestCase
             $this->assertNull(JpZipCode::search($errorZip));
         }
     }
+
+    function testOverwritePrefCodeConfig()
+    {
+        JpZipCode::setPrefCodesConfigFilePath(__DIR__ . '/fixture/pref_code_test.yaml');
+        $addressData = JpZipCode::search('8100001');
+        $this->assertEquals('940', $addressData['pref_code']);
+        $this->assertEquals('40',  $addressData['jis_pref_code']);
+    }
 }
