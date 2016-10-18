@@ -1,0 +1,13 @@
+language: php
+php:
+- 5.6
+- 7.0
+before_script:
+- curl -s http://getcomposer.org/installer | php
+- php composer.phar install --dev --prefer-source
+script:
+- phpunit
+notifications:
+  email: false
+  slack:
+    secure: ekG0m+AT7rcyU3R92DjtwI0O7QrM9z5p/rfnaWuLKLl8ysE1YuF/emdrYXHn0jkVNFPBPXnOmHBB1amzvE9Sv5fA3PmGj7TQf+QH+ij/tQgpojzfqYteKKkr+EU1BZ6sckDf7MZ10HlMVPRJ3FZCBVHEdo7f6O5JDtxLM9XAPSQkXUWrVL/Mw67dl4QIL3hY4Hy9Q9siygKP3I8WOJJ/z7Rvmk4IaG3n1VUtSaM/EyBJAVrMoviPQJwa3uxn9eyAKa97R/X7T+qSLkzCDyo11JL8FUS3R/8K+n67S22u+SRo6VgvOW2RfTuhdnDrpFMsD7fKk1faFi3n/+2XYdg61LnrVYxHonfpwAeCrNzaj/PsHC1JRb7AQW3vWud/dqNeWtTK4ZJ/eXv9Jp0O6lA5TNw6DaSAKn8GNUw6F+N7CvtVbiKAG0q/508O/HA2lRyCYEaufXQnxH00RIoyJCSodWEEcDz10qsss77+Tan1spegGThCfM2hGtQCdP3SJuHGAFXoC3HdydPf/R4N/yQNhMwz8NuCYWKFSQ54QbyW4z7EpDgnrCGYHY92qwRXqmT9ZVdMcf8T3rG3BByQ7woyiUv18q8HxpIkrWyT1EM/FqfX9UOwJahuC/KPC9NMM3S7xmis/QC73M2E+tEv0+6VeXimTtRe1WzW5Xazgp5/i1g=
